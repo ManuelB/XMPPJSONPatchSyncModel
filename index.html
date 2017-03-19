@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO List based on XMPP JSON Patch Sync Model</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/strophe.js/1.2.13/strophe.js"></script>
+    <script src="incentergy/hash/XXH.js"></script>
+    <script id='sap-ui-bootstrap' src='https://openui5.hana.ondemand.com/1.44.9/resources/sap-ui-core.js' data-sap-ui-resourceroots='{"todo": "./todo", "incentergy": "./incentergy"}' data-sap-ui-theme='sap_belize' data-sap-ui-libs='sap.m' data-sap-ui-compatVersion='edge'
+        data-sap-ui-preload='async'>
+    </script>
+
+    <script>
+        sap.ui.getCore().attachInit(function() {
+            new sap.ui.core.ComponentContainer({
+                name: "todo"
+            }).placeAt("content");
+        });
+    </script>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class='sapUiBody' id='content'>
+</body>
+
+</html>

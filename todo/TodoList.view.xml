@@ -1,0 +1,35 @@
+<View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"  controllerName="todo.TodoList" height="100%">
+	<App>
+        <Page title="TODO List">
+            <headerContent>
+                <!-- This button will be set to visible when the owner property was resolved -->
+                <Button id="deleteButton" icon="sap-icon://delete" tooltip="Delete" press="onDelete" visible="false" />
+            </headerContent>
+            <Table items="{/items}">
+                <columns>
+                    <Column width="30%">
+                        <Text text="Created" />
+                    </Column>
+                    <Column width="60%">
+                        <Text text="Title" />
+                    </Column>
+                    <Column width="10%">
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <Text text="{created}" />
+                        <Input value="{title}" /> 
+                        <Button icon="sap-icon://delete" tooltip="Delete item" press="onDeleteItem" />
+                    </ColumnListItem>
+                </items>
+            </Table>
+            <footer>
+                <Toolbar>
+                    <Input id="newTodoInput" submit="onSubmitCreateNewTodo" />
+                    <Button text="Add" type="Accept" press="onPressCreateNewTodo" />
+                </Toolbar>
+            </footer>
+        </Page>
+    </App>
+</View>
