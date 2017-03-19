@@ -25,3 +25,11 @@ The wireformat used in JSONPatch.
 
 
 ![Architecture](/img/XMPPJSONPatchSyncModel-Architecture.png?raw=true "Architecture")
+
+# YouTube Video
+
+https://www.youtube.com/watch?v=ecWQd1yD5dE
+
+# Company
+
+This software was proudly developer by [Incentergy GmbH](http://www.incentergy.de)
