@@ -3,7 +3,7 @@
  */
 
 // Provides the XMPPJSONPatchSync model implementation of a property binding
-sap.ui.define(['jquery.sap.global', 'sap/ui/model/ChangeReason', 'sap/ui/model/ClientPropertyBinding', 'sap/ui/model/ChangeReason'],
+sap.ui.define(['jquery.sap.global', 'sap/ui/model/ChangeReason', 'sap/ui/model/ClientPropertyBinding'],
     function(jQuery, ChangeReason, ClientPropertyBinding) {
         "use strict";
 

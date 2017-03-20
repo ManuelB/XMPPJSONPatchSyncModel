@@ -499,13 +499,16 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/ClientModel', 'sap/ui/model/Co
          * first calculating the xxHash and afterwards adding the object.
          * 
          * @param {any} item the object to add
+         * @param {boolean} bSuppressCheckUpdate do not call checkUpdate
          */
-        XMPPJSONPatchSyncModel.prototype.addItem = function(item) {
+        XMPPJSONPatchSyncModel.prototype.addItem = function(item, bSuppressCheckUpdate) {
             var jsonItem = JSON.stringify(item);
             var objectKey = XXH.h32(jsonItem, 0xABCD).toString(16);
             this._oData.inserts[objectKey] = item;
             this._publishAddToXmppTopic("/inserts/" + objectKey, item);
-            this.checkUpdate();
+            if (!bSuppressCheckUpdate) {
+                this.checkUpdate();
+            }
         };
 
         /**
@@ -513,13 +516,16 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/ClientModel', 'sap/ui/model/Co
          * first calculating the xxHash and afterwards adding the object.
          * 
          * @param {any} item the object to add
+         * @param {boolean} bSuppressCheckUpdate do not call checkUpdate
          */
-        XMPPJSONPatchSyncModel.prototype.removeItem = function(item) {
+        XMPPJSONPatchSyncModel.prototype.removeItem = function(item, bSuppressCheckUpdate) {
             var jsonItem = JSON.stringify(item);
             var objectKey = XXH.h32(jsonItem, 0xABCD).toString(16);
             this._oData.removes[objectKey] = item;
             this._publishAddToXmppTopic("/removes/" + objectKey, item);
-            this.checkUpdate();
+            if (!bSuppressCheckUpdate) {
+                this.checkUpdate();
+            }
         };
 
         /**
@@ -574,10 +580,34 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/ClientModel', 'sap/ui/model/Co
         /**
          * setProperty in Model
          */
-        XMPPJSONPatchSyncModel.prototype.setProperty = function(sPath, oContext) {
+        XMPPJSONPatchSyncModel.prototype.setProperty = function(sPath, value, oContext) {
             // TODO: Not implemented yet
             // we have to add the current object to the remove sets
-            // afterwards we have to add the new object to the inserts set 
+            // afterwards we have to add the new object to the inserts set
+            var objectToUpdate;
+            if (oContext) {
+                objectToUpdate = this._getObject(oContext.getPath());
+            }
+
+            var aParts = sPath.split("/"),
+                iIndex = 0;
+            if (!aParts[0]) {
+                // absolute path starting with slash
+                iIndex++;
+            }
+            // Get the last element as the path
+            sPath = aParts.pop();
+            while (objectToUpdate && aParts[iIndex]) {
+                objectToUpdate = objectToUpdate[aParts[iIndex]];
+                iIndex++;
+            }
+
+            this.removeItem(objectToUpdate, true);
+            var newObject = $.extend({}, objectToUpdate);
+            newObject[sPath] = value;
+            this.addItem(newObject, true);
+            this.checkUpdate(false);
+            return false;
         };
 
         /**
