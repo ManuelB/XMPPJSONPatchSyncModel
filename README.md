@@ -32,4 +32,4 @@ https://www.youtube.com/watch?v=ecWQd1yD5dE
 
 # Company
 
-This software was proudly developer by [Incentergy GmbH](http://www.incentergy.de)
+This software was proudly developed by [Incentergy GmbH](http://www.incentergy.de)
