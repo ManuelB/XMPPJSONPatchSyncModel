@@ -21,7 +21,7 @@ host_config:
        - internal
        - anonymous
 
-The wireformat used in JSONPatch.
+The wireformat used is JSONPatch.
 
 
 ![Architecture](/img/XMPPJSONPatchSyncModel-Architecture.png?raw=true "Architecture")
