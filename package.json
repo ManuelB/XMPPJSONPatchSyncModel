@@ -1,0 +1,8 @@
+{
+    "name": "incentergy-model",
+    "version": "0.0.9",
+    "devDependencies": {
+        "grunt": "^0.4.5",
+        "grunt-openui5": "^0.12.0"
+    }
+}

@@ -27,8 +27,8 @@
  * @public
  */
 // Provides the XMPPJSONPatchSyncModel object based model implementation
-sap.ui.define(['jquery.sap.global', 'sap/ui/model/ClientModel', 'sap/ui/model/Context', './XMPPJSONPatchSyncListBinding', './XMPPJSONPatchSyncPropertyBinding'],
-    function(jQuery, ClientModel, Context, XMPPJSONPatchSyncListBinding, XMPPJSONPatchSyncPropertyBinding) {
+sap.ui.define(['jquery.sap.global', 'sap/ui/model/ClientModel', 'sap/ui/model/Context', './XMPPJSONPatchSyncListBinding', './XMPPJSONPatchSyncPropertyBinding', './hash/XXH', 'strophe'],
+    function(jQuery, ClientModel, Context, XMPPJSONPatchSyncListBinding, XMPPJSONPatchSyncPropertyBinding, XXH) {
         "use strict";
         var XMPPJSONPatchSyncModel = ClientModel.extend("incentergy.model.XMPPJSONPatchSyncModel", /** @lends incentergy.model.XMPPJSONPatchSyncModel.prototype */ {
 
