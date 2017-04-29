@@ -30,6 +30,7 @@
 sap.ui.define(['jquery.sap.global', 'sap/ui/model/ClientModel', 'sap/ui/model/Context', './XMPPJSONPatchSyncListBinding', './XMPPJSONPatchSyncPropertyBinding', './hash/XXH', 'strophe'],
     function(jQuery, ClientModel, Context, XMPPJSONPatchSyncListBinding, XMPPJSONPatchSyncPropertyBinding, XXH) {
         "use strict";
+        var Strophe = window.Strophe;
         var XMPPJSONPatchSyncModel = ClientModel.extend("incentergy.model.XMPPJSONPatchSyncModel", /** @lends incentergy.model.XMPPJSONPatchSyncModel.prototype */ {
 
             /**
