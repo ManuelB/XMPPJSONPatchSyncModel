@@ -73,6 +73,11 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/ClientModel', 'sap/ui/model/Co
                     me.oOwnerDeterminedResolved = resolve;
                     me.oOwnerDeterminedReject = reject;
                 });
+
+                this.oOwnerDeterminedPromise.catch(function(e) {
+                    // log error 
+                    console.log(e);
+                });
             },
 
             metadata: {}
