@@ -632,7 +632,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/ClientModel', 'sap/ui/model/Co
 
             // oData 
             var oNode = { "items": [] };
-            Object.keys(this._oData.inserts).sort().map(function(key, index) {
+            Object.keys(this._oData.inserts) /*.sort()*/ .map(function(key, index) {
                 if (!(key in me._oData.removes)) {
                     oNode.items.push(me._oData.inserts[key]);
                 }
