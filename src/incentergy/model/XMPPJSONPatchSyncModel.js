@@ -419,11 +419,14 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/ClientModel', 'sap/ui/model/Co
          */
         XMPPJSONPatchSyncModel.prototype.onMessage = function(oMessage) {
             var values = oMessage.getElementsByTagName("value");
+            if (values.length === 0) {
+                return true;
+            }
             if (values.length == 1) {
                 var itemText = values[0].textContent;
                 this.processItem(itemText);
             } else {
-                jQuery.sap.log.warning("Expected length of values to be 1 but is: " + values);
+                jQuery.sap.log.warning("Expected length of values to be 1 but is: " + values.length);
             }
             this.checkUpdate();
 
