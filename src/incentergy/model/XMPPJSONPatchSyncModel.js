@@ -78,6 +78,9 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/ClientModel', 'sap/ui/model/Co
                     // log error 
                     console.log(e);
                 });
+
+                // Set max size a lot higher than normal
+                this.setSizeLimit(1048576);
             },
 
             metadata: {}
@@ -627,6 +630,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/ClientModel', 'sap/ui/model/Co
                 jQuery.sap.log.warning("This model only supports an items array");
                 return undefined;
             }
+            jQuery.sap.measure.start(this.getId() + "---_getObject", "_getObject of " + sPath, ["XMPPJsonPatchSyncModel"]);
 
             var me = this;
 
@@ -644,6 +648,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/ClientModel', 'sap/ui/model/Co
                 oNode = oContext;
             }
             if (!sPath) {
+                jQuery.sap.measure.end(this.getId() + "---_getObject");
                 return oNode;
             }
             var aParts = sPath.split("/"),
@@ -656,6 +661,7 @@ sap.ui.define(['jquery.sap.global', 'sap/ui/model/ClientModel', 'sap/ui/model/Co
                 oNode = oNode[aParts[iIndex]];
                 iIndex++;
             }
+            jQuery.sap.measure.end(this.getId() + "---_getObject");
             return oNode;
         };
 
